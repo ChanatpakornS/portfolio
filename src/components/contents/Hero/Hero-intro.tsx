@@ -18,16 +18,12 @@ export const HeroIntroduction = (props: Props) => {
     const { x, y } = useMaskCursor(containerRef);
     const { childReal, childIdeal } = props
 
-    const size = isHover ? 400 : 0;
-
-    useEffect(() => {
-        console.log("pos:", x, y);
-    }, [x, y])
+    const size = isHover ? 500 : 0;
 
     return (
         <div 
         ref={containerRef}
-        className="p-8 items-center flex justify-center relative"
+        className="p-8 relative border border-gray-300"
         >
             <motion.div
                 className={styles.mask}
@@ -42,7 +38,7 @@ export const HeroIntroduction = (props: Props) => {
                 {childReal}
             </motion.div>
 
-            <div className="size-full abosolute top-0 left-0 flex items-center justify-center">
+            <div className="size-full abosolute top-0 left-0 pb-8 ">
                 {childIdeal}
             </div>
         </div>

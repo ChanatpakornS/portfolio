@@ -1,22 +1,24 @@
 'use client';
 
 import { HeroIntroduction } from "./Hero-intro"
-import { Test } from "./data/Test"
+import { AboutGoalDataIdeal, AboutGoalDataReal } from "./data/about-goal";
+import { AboutMeDataIdeal, AboutMeDataReal } from "./data/about-me";
+import { AboutProjectDataIdeal, AboutProjectDataReal } from "./data/about-project";
 
 export const Hero = () => {
     return (
-        <div className="grid grid-cols-1 w-full h-full md:grid-cols-3 text-black">
+        <div className="grid grid-cols-1 w-full h-full md:grid-cols-3 text-black border border-gray-300 ">
             <HeroIntroduction
-                childReal={<Test />}
-                childIdeal={<Test />}
+            childReal={<AboutMeDataReal />}
+            childIdeal={<AboutMeDataIdeal />}
             />
             <HeroIntroduction
-                childReal={<Test />}
-                childIdeal={<Test />}
+            childReal={<AboutGoalDataReal />}
+            childIdeal={<AboutGoalDataIdeal />}
             />
             <HeroIntroduction
-                childReal={<Test />}
-                childIdeal={<Test />}
+            childReal={<AboutProjectDataReal />}
+            childIdeal={<AboutProjectDataIdeal />}
             />
         </div>
     );

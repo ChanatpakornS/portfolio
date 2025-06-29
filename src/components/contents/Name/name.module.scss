@@ -1,0 +1,9 @@
+.blinkingCursor {
+  animation: cursor 0.4s step-end infinite alternate;
+}
+
+@keyframes cursor {
+  50% {
+    border-right-color: transparent;
+  }
+}

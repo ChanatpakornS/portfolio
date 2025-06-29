@@ -8,13 +8,13 @@ import "../styles/global.css";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href="/myLogo.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>CSAP</title>
 	</head>
-	<body class="bg-background text-color-text font-sans">
+	<body class="bg-cyan-100 text-color-text font-sans min-h-screen flex flex-col">
 		<Navbar/>
-		<main class="flex w-full h-[100dvh] bg-background">
+		<main class="flex w-full flex-1 h-full">
 			<slot />
 		</main>
 		<Footer/>

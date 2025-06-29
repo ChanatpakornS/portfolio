@@ -8,8 +8,11 @@
   background: #a9dff8;
   mask-repeat: no-repeat;
   color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 32px
+  padding: 32px;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
 }

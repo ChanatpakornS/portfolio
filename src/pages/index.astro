@@ -1,11 +1,13 @@
 ---
 import { Hero } from "@components/contents/Hero/Hero";
+import { Name } from "@components/contents/Name/Name.tsx";
 import Container from "@components/wrappers/Container.astro";
 import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout>
 	<Container>
+		<Name client:load/>
 		<Hero client:load/>
 	</Container>
 </Layout>

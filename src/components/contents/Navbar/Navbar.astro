@@ -1,12 +1,23 @@
 ---
 import Link from '@components/commons/Link.astro';
+import { Image } from 'astro:assets';
 ---
 
-<nav class="sticky w-full text-black">
-    <div class="flex justify-between p-4 bg-background text-color-text">
-        <div class="space-x-4">
+<nav class="w-full text-black bg-cyan-100 z-50 sticky top-0">
+    <div class="flex justify-between py-4 px-8 items-center">
+        <div>
+            <a href="https://github.com/ChanatpakornS">
+                <Image
+                    src="/myLogo.png"
+                    alt="CSAP Logo"
+                    width={40}
+                    height={40}
+                    class="rounded-full"
+                    />
+            </a>
+        </div>
+        <div class="space-x-2">
             <Link link="/" title="Home" />
-            <Link link="/about" title="About" />
             <Link link="/projects" title="Projects" />
             <Link link="/blog" title="Blog" />          
         </div>
