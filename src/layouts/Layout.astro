@@ -1,3 +1,8 @@
+---
+import Navbar from '@components/contents/Navbar/Navbar.astro';
+import Footer from '@components/contents/Footer/Footer.astro';
+import "../styles/global.css";
+---
 <!doctype html>
 <html lang="en">
 	<head>
@@ -5,18 +10,13 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>CSAP</title>
 	</head>
-	<body>
-		<slot />
+	<body class="bg-background text-color-text font-sans">
+		<Navbar/>
+		<main class="flex w-full h-[100dvh] bg-background">
+			<slot />
+		</main>
+		<Footer/>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
