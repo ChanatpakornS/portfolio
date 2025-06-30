@@ -20,7 +20,7 @@ useEffect(() => {
 
 return (
         <div className="flex items-center justify-center w-full py-18">
-                <p className="text-2xl md:text-3xl">👋 Hello, I am <span className={`border-r-2 border-r-black mr-4 bg-amber-500 p-4 text-white font-bold ${styles.blinkingCursor}`}>{name}</span>!</p>
+                <p className="text-2xl md:text-3xl">👋 Hello, I am <span className={`border-r-2 border-r-black mr-4 bg-spotlight p-4 text-white font-bold ${styles.blinkingCursor}`}>{name}</span>!</p>
         </div>
     );
 }

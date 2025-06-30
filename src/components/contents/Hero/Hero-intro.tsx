@@ -23,7 +23,7 @@ export const HeroIntroduction = (props: Props) => {
     return (
         <div 
         ref={containerRef}
-        className="p-8 relative border border-gray-300"
+        className="p-8 relative border border-gray-300 size-full"
         >
             <motion.div
                 className={styles.mask}
