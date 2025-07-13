@@ -1,22 +1,25 @@
 ---
-import Navbar from '@components/contents/Navbar/Navbar.astro';
-import Footer from '@components/contents/Footer/Footer.astro';
+import Navbar from "@components/contents/Navbar/Navbar.astro";
+import Footer from "@components/contents/Footer/Footer.astro";
 import "../styles/global.css";
 ---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="/myLogo.png" />
-		<meta name="generator" content={Astro.generator} />
-		<title>CSAP</title>
-	</head>
-	<body class="bg-background text-color-text font-sans min-h-screen flex flex-col">
-		<Navbar/>
-		<main class="flex w-full flex-1 h-full">
-			<slot />
-		</main>
-		<Footer/>
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/png" href="/myLogo.png" />
+        <meta name="generator" content={Astro.generator} />
+        <title>CSAP</title>
+    </head>
+    <body
+        class="bg-background text-color-text font-sans min-h-screen flex flex-col"
+    >
+        <Navbar />
+        <main class="flex w-full flex-1 h-full">
+            <slot />
+        </main>
+        <Footer />
+    </body>
 </html>
