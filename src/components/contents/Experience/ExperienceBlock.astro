@@ -1,0 +1,22 @@
+---
+import ExperienceSubblock from "./ExperienceSubblock.astro";
+import type { Experiences } from "@types/Experience";
+
+interface Props extends Experiences {}
+
+const { year = 2004, expData } = Astro.props;
+---
+
+<article
+    class="sticky top-16 md:flex-row justify-between w-full z-10 bg-background h-full"
+>
+    <a id={String(year)} class="w-full relative" href={`#${String(year)}`}>
+        <h3>{year}</h3>
+    </a>
+    <div class="size-full space-y-4">
+        <ExperienceSubblock />
+        <ExperienceSubblock />
+        <ExperienceSubblock />
+    </div>
+</article>
+<hr class="opacity-20" />

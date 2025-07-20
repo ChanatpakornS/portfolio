@@ -3,8 +3,7 @@ interface Props {
     space?: number;
 }
 
-const { space = 16 } = Astro.props;
+const { space = 64 } = Astro.props;
 ---
 
-<div class={`flex h-${space} items-center justify-center`}>
-</div>
+<div class={`flex h-${space} items-center justify-center`}></div>
