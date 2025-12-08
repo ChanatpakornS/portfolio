@@ -1,0 +1,9 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { About } from "@components/contents/About/About";
+---
+
+<Layout>
+    <div class="text-3xl font-semibold mb-4">Lab List</div>
+    <About client:load />
+</Layout>

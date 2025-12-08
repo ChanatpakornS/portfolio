@@ -7,6 +7,15 @@ interface Props {
 const { link, title } = Astro.props;
 ---
 
-<a class="hover:bg-gray-300 px-2 lg:px-4 py-1 hover:underline rounded-3xl" href={link}>
-    {title}
+<a
+    class="hover:bg-gray-300 px-2 lg:px-4 py-1 group-hover:underline rounded-3xl group relative inline-block"
+    href={link}
+>
+    <span
+        class="inline-block group-hover:translate-x-1 group-hover:opacity-100 opacity-0 transition-all duration-300 ease-out"
+        >{">"}</span
+    >
+    <span class="transition-transform duration-300 ease-out inline-block">
+        {title}
+    </span>
 </a>

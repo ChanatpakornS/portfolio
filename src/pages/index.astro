@@ -1,13 +1,15 @@
 ---
-import { Hero } from "@components/contents/Hero/Hero";
 import { Name } from "@components/contents/Name/Name.tsx";
-import Container from "@components/wrappers/Container.astro";
+import Contact from "@components/contents/Contact/Contact.astro";
 import Layout from "@layouts/Layout.astro";
+import { BackgroundGradientAnimation } from "@components/ui/background-gradient-animation";
 ---
 
 <Layout>
-	<Container>
-		<Name client:load/>
-		<Hero client:load/>
-	</Container>
+    <BackgroundGradientAnimation client:load containerClassName="pt-16">
+        <div class="absolute z-50 items-center w-full">
+            <Name client:load />
+            <Contact />
+        </div>
+    </BackgroundGradientAnimation>
 </Layout>

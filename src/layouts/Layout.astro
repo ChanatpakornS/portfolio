@@ -3,6 +3,7 @@ import Navbar from "@components/contents/Navbar/Navbar.astro";
 import Footer from "@components/contents/Footer/Footer.astro";
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
+import Container from "@components/wrappers/Container.astro";
 ---
 
 <!doctype html>
@@ -10,7 +11,18 @@ import { ClientRouter } from "astro:transitions";
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/113345557?v=4" />
+        <link
+            rel="icon"
+            type="image/png"
+            href="https://avatars.githubusercontent.com/u/113345557?v=4"
+        />
+        <link
+            rel="preload"
+            href="/fonts/Doto-VariableFont_ROND,wght.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
         <meta name="generator" content={Astro.generator} />
         <title>CSAP</title>
     </head>
@@ -19,8 +31,10 @@ import { ClientRouter } from "astro:transitions";
     >
         <ClientRouter />
         <Navbar />
-        <main class="flex w-full flex-1 h-full">
-            <slot />
+        <main class="flex w-full h-full">
+            <Container>
+                <slot />
+            </Container>
         </main>
         <Footer />
     </body>
