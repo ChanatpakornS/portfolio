@@ -4,6 +4,7 @@ import Footer from "@components/contents/Footer/Footer.astro";
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import Container from "@components/wrappers/Container.astro";
+import { BackgroundGradientAnimation } from "@components/ui/background-gradient-animation";
 ---
 
 <!doctype html>
@@ -26,15 +27,15 @@ import Container from "@components/wrappers/Container.astro";
         <meta name="generator" content={Astro.generator} />
         <title>CSAP</title>
     </head>
-    <body
-        class="bg-background text-color-text font-sans min-h-screen flex flex-col"
-    >
+    <body class="text-color-text font-sans min-h-screen flex flex-col">
         <ClientRouter />
-        <Navbar />
-        <main class="flex w-full h-full">
-            <Container>
-                <slot />
-            </Container>
+        <main class="flex w-full h-full flex-col">
+            <BackgroundGradientAnimation client:load>
+                <Navbar />
+                <Container>
+                    <slot />
+                </Container>
+            </BackgroundGradientAnimation>
         </main>
         <Footer />
     </body>
