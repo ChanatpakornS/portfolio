@@ -5,10 +5,6 @@ import GitHubCopilot from "@assets/githubCopilot.svg";
 import Gemini from "@assets/gemini.svg";
 import Claude from "@assets/claude.svg";
 
-import TypeScript from "@assets/typescript.svg";
-import Golang from "@assets/golang.svg";
-import Python from "@assets/python.svg";
-
 export const AboutStackDataIdeal = () => {
     return (
         <div className="p-8">
