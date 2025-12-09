@@ -8,7 +8,7 @@ import { BackgroundGradientAnimation } from "@components/ui/background-gradient-
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
@@ -23,9 +23,11 @@ import { BackgroundGradientAnimation } from "@components/ui/background-gradient-
         <meta name="generator" content={Astro.generator} />
         <title>CSAP</title>
     </head>
-    <body class="text-color-text font-sans min-h-screen flex flex-col">
+    <body
+        class="text-foreground font-sans min-h-screen flex flex-col overflow-x-hidden"
+    >
         <ClientRouter />
-        <main class="flex w-full h-full flex-col">
+        <main class="flex w-full h-full flex-col min-h-screen">
             <BackgroundGradientAnimation client:load>
                 <Navbar />
                 <Container>
