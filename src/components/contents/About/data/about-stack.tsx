@@ -1,7 +1,13 @@
+import type { ImageMetadata } from "astro";
+
 import ChatGPT from "@assets/chatGPT.svg";
 import GitHubCopilot from "@assets/githubCopilot.svg";
 import Gemini from "@assets/gemini.svg";
 import Claude from "@assets/claude.svg";
+
+import TypeScript from "@assets/typescript.svg";
+import Golang from "@assets/golang.svg";
+import Python from "@assets/python.svg";
 
 export const AboutStackDataIdeal = () => {
     return (
@@ -9,15 +15,43 @@ export const AboutStackDataIdeal = () => {
             <h1 className="text-2xl font-bold mb-4 text-center">
                 About Stacks ⚙️
             </h1>
-            <div className="flex items-center justify-center">
-                {/*<img src="https://skillicons.dev/icons?i=python,js,java,cpp,go"/>*/}
+            <div className="flex items-center justify-center gap-4">
+                <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-plain.svg"
+                    height={48}
+                    width={48}
+                />
+
+                <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
+                    height={48}
+                    width={48}
+                />
+
+                <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+                    height={48}
+                    width={48}
+                />
+
+                <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
+                    height={48}
+                    width={48}
+                />
+
+                <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg"
+                    height={48}
+                    width={48}
+                />
             </div>
         </div>
     );
 };
 
 export const AboutStackDataReal = () => {
-    const stacks = [
+    const stacks: { image: ImageMetadata; alt: string }[] = [
         { image: ChatGPT, alt: "ChatGPT" },
         { image: GitHubCopilot, alt: "GitHub Copilot" },
         { image: Gemini, alt: "Gemini" },
