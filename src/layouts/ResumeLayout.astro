@@ -1,0 +1,30 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+---
+
+<!doctype html>
+<html lang="en" class="overflow-x-hidden">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/png" href="/logo.png" />
+         <link
+            rel="preload"
+            href="/fonts/helveticaneue.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <meta name="generator" content={Astro.generator} />
+        <title>CSAP</title>
+    </head>
+    <body
+        class="text-foreground font-sans min-h-screen flex flex-col overflow-x-hidden"
+    >
+        <ClientRouter />
+        <main class="flex w-full h-full flex-col min-h-screen relative">
+            <slot />  
+        </main>
+    </body>
+</html>
