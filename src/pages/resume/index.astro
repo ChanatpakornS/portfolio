@@ -2,15 +2,19 @@
 import ResumeLayout from "@layouts/ResumeLayout.astro";
 import { resume } from '@components/contents/Resume/data/resume';
 import { Intro } from '@components/contents/Resume/Intro';
-import { Work } from '@components/contents/Resume/Work';
+import { Works } from '@components/contents/Resume/Work';
+import { Education } from "@/components/contents/Resume/Education";
+import { Tech } from "@/components/contents/Resume/Tech";
+import { Projects } from "@/components/contents/Resume/Project";
+import { Interest } from "@/components/contents/Resume/Interest";
 ---
 <ResumeLayout>
    <div class=" size-full">
       <Intro {...resume.intro} client:load/>
-      {
-         resume.works.map((work) => (
-            <Work {...work} client:load/>
-         ))
-      }
+      <Tech {...resume.techStack} client:load/>
+      <Education education={resume.education} client:load/>
+      <Works works={resume.works} client:load/>
+      <Projects projects={resume.projects} client:load/>
+      <Interest {...resume} client:load/>
    </div>
 </ResumeLayout> 
