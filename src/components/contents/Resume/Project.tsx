@@ -24,7 +24,7 @@ const ProjectItem = ({ name, url, description }: ItemProps) => {
     <Hideable>
       <div className="flex font-bold print:mb-1">
         <a
-          className="flex-1 text-left"
+          className=" text-left"
           href={url || "#"}
           target="_blank"
           rel="noreferrer"

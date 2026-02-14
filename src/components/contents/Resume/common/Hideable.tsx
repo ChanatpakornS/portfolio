@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -9,7 +8,6 @@ interface Props {
 }
 
 export const Hideable = ({ children }: Props) => {
-  const [isPending, startTransition] = useTransition();
   const [hidden, setHidden] = useState(false);
 
   return (
@@ -20,12 +18,10 @@ export const Hideable = ({ children }: Props) => {
       )}
       onClick={(e) => {
         e.stopPropagation();
-        startTransition(() => setHidden(!hidden));
+        setHidden(!hidden);
       }}
     >
-      <span>{isPending ? <HideableFallback /> : children}</span>
+      <span>{children}</span>
     </div>
   );
 };
-
-export const HideableFallback = () => <Skeleton className="h-4 w-full" />;

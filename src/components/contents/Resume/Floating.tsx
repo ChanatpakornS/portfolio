@@ -61,7 +61,7 @@ export const Floating = () => {
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          className="fixed rounded-full cursor-grab active:cursor-grabbing select-none touch-none"
+          className="fixed rounded-full cursor-grab active:cursor-grabbing select-none touch-none print:hidden"
           style={{ right: position.x, bottom: position.y }}
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
@@ -73,7 +73,7 @@ export const Floating = () => {
           <Coffee size={64} className="p-2.5 text-white" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent side="left" dir="ltr" className="bg-white">
+      <PopoverContent side="left" dir="ltr" className="bg-white print:hidden">
         <div className="space-y-4">
           <h2>Just a coffee icon with some action suggestions:</h2>
           <ul className="space-y-2">
@@ -85,7 +85,9 @@ export const Floating = () => {
             <li>
               <Button
                 className="bg-red-500 w-full"
-                onClick={() => history.back()}
+                onClick={() => {
+                  window.location.replace("/");
+                }}
               >
                 Back
               </Button>
