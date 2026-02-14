@@ -7,9 +7,10 @@ import { Education } from "@/components/contents/Resume/Education";
 import { Tech } from "@/components/contents/Resume/Tech";
 import { Projects } from "@/components/contents/Resume/Project";
 import { Interest } from "@/components/contents/Resume/Interest";
+import { Floating } from "@/components/contents/Resume/Floating";
 ---
 <ResumeLayout>
-   <div class=" size-full">
+   <div class="size-full">
       <Intro {...resume.intro} client:load/>
       <Tech {...resume.techStack} client:load/>
       <Education education={resume.education} client:load/>
@@ -17,4 +18,5 @@ import { Interest } from "@/components/contents/Resume/Interest";
       <Projects projects={resume.projects} client:load/>
       <Interest {...resume} client:load/>
    </div>
-</ResumeLayout> 
+   <Floating client:load/>
+</ResumeLayout>
