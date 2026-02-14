@@ -11,11 +11,16 @@ const introData = {
 
 const workData = [
   {
-    position: "Software Engineer",
+    position: "Software Engineer - Internship",
     company: "Dime!",
-    url: "test",
-    years: ["2023", "Present"],
-    details: ["testnumber-1", "testnumber-2"],
+    url: "https://dime.co.th",
+    years: ["July 2025", "August 2025"],
+    details: [
+      "Maintained and enhanced the system using Hexagonal Architecture in Go.",
+      "Built internal APIs while ensuring system functionality through proper role-based access control and comprehensive testing.",
+      "Implemented an in-memory caching mechanism to minimize API calls to the remote validation server.",
+      "Worked closely with the team to implement Redis-based locking to guarantee transaction atomicity and data consistency.",
+    ],
   },
 ];
 

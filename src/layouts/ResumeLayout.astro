@@ -20,11 +20,18 @@ import { ClientRouter } from "astro:transitions";
         <title>CSAP</title>
     </head>
     <body
-        class="text-foreground font-sans min-h-screen flex flex-col overflow-x-hidden"
+        class="text-foreground min-h-screen flex flex-col overflow-x-hidden"
     >
         <ClientRouter />
-        <main class="flex w-full h-full flex-col min-h-screen relative">
+        <main class="flex w-full h-full flex-col min-h-screen relative px-4 py-8">
             <slot />  
         </main>
     </body>
 </html>
+
+<style is:global>
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: normal;
+    }
+</style>

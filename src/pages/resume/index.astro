@@ -3,14 +3,14 @@ import ResumeLayout from "@layouts/ResumeLayout.astro";
 import { resume } from '@components/contents/Resume/data/resume';
 import { Intro } from '@components/contents/Resume/Intro';
 import { Work } from '@components/contents/Resume/Work';
-import { Floating } from "@/components/contents/Resume/Floating";
 ---
 <ResumeLayout>
-   <Floating />
-   <Intro {...resume.intro} client:load/>
-   {
-      resume.works.map((work) => (
-         <Work {...work} client:load/>
-      ))
-   }
-</ResumeLayout>
+   <div class=" size-full">
+      <Intro {...resume.intro} client:load/>
+      {
+         resume.works.map((work) => (
+            <Work {...work} client:load/>
+         ))
+      }
+   </div>
+</ResumeLayout> 
