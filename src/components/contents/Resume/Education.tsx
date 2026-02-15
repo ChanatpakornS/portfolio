@@ -1,3 +1,4 @@
+import { Hideable } from "./common/Hideable";
 import { Topic } from "./common/Topic";
 
 interface Props {
@@ -13,7 +14,7 @@ interface ItemProps {
 
 export const Education = ({ education }: Props) => {
   return (
-    <div>
+    <Hideable>
       <Topic title="Education" />
       <ul>
         {education.map((item, index) => (
@@ -27,13 +28,13 @@ export const Education = ({ education }: Props) => {
           </li>
         ))}
       </ul>
-    </div>
+    </Hideable>
   );
 };
 
 const EducationItem = ({ academic, degree, GPA, endYear }: ItemProps) => {
   return (
-    <div>
+    <Hideable>
       <div className="flex justify-between">
         <h4 className="font-bold italic">{academic}</h4>
         <p className="font-bold">{endYear}</p>
@@ -43,6 +44,6 @@ const EducationItem = ({ academic, degree, GPA, endYear }: ItemProps) => {
           {degree}, <span>({GPA})</span>
         </p>
       </div>
-    </div>
+    </Hideable>
   );
 };

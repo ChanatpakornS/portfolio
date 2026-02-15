@@ -11,12 +11,12 @@ interface ItemProps {
 }
 
 export const Projects = ({ projects }: Props) => (
-  <div>
+  <Hideable>
     <Topic title="Projects" />
     {projects.map((project, index) => (
       <ProjectItem key={index} {...project} client:load />
     ))}
-  </div>
+  </Hideable>
 );
 
 const ProjectItem = ({ name, url, description }: ItemProps) => {

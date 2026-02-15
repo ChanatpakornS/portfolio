@@ -13,14 +13,14 @@ interface ItemProps {
 }
 
 export const Works = ({ works }: Props) => (
-  <div>
+  <Hideable>
     <Topic title="Work Experience" />
     <div className="space-y-2">
       {works.map((work, index) => (
         <WorkItem key={index} {...work} client:load />
       ))}
     </div>
-  </div>
+  </Hideable>
 );
 
 const WorkItem = ({ position, company, url, years, details }: ItemProps) => {
