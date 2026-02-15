@@ -33,7 +33,7 @@ const workData = [
     url: "https://dime.co.th",
     years: ["July 2025", "August 2025"],
     details: [
-      "Maintained and enhanced the system using Hexagonal Architecture in Go.",
+      "Maintained and enhanced the system using Hexagonal with Event-Driven Architecture in Go.",
       "Built internal APIs while ensuring system functionality through proper role-based access control and comprehensive testing.",
       "Implemented an in-memory caching mechanism to minimize API calls to the remote validation server.",
       "Worked closely with the team to implement Redis-based locking for Kubernetes to guarantee transaction atomicity and data consistency.",
