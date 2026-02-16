@@ -12,8 +12,8 @@ const introData = {
 // TODO: Edit this draft data
 const techData = {
   languages: ["Go", "Python", "JavaScript", "TypeScript"],
-  frameworks: ["React", "Astro", "Tailwind CSS"],
-  tools: ["Git", "Docker", "Kubernetes", "Redis"],
+  frameworks: ["React", "Astro", "Tailwind CSS", "Fiber", "Next.js"],
+  tools: ["Git", "Docker", "Kubernetes", "Redis", "PostgreSQL", "MongoDB"],
 };
 
 // TODO: Edit this draft data
