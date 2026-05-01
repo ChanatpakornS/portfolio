@@ -4,6 +4,54 @@ import { About } from "@components/contents/About/About";
 ---
 
 <Layout>
-    <div class="text-3xl font-semibold mb-4 text-black">Lab List</div>
-    <About client:load />
+    <section class="w-full max-w-5xl mx-auto px-4 py-12">
+        <div class="labs-header opacity-0">
+            <h2 class="text-3xl md:text-4xl font-bold mb-2 tracking-tight text-black">
+                Labs
+            </h2>
+            <p class="text-gray-500 font-normal mb-8 text-sm md:text-base">
+                Interactive experiments and playful components. Hover to reveal the truth.
+            </p>
+        </div>
+        <div class="labs-content opacity-0">
+            <About client:load />
+        </div>
+    </section>
 </Layout>
+
+<script>
+    import { createTimeline } from "animejs";
+
+    const animated = ".labs-header, .labs-content";
+    let firstLoad = true;
+
+    function initAnimations() {
+        if (!document.querySelector(".labs-header")) return;
+
+        if (!firstLoad) {
+            document.querySelectorAll(animated).forEach((el) => {
+                (el as HTMLElement).style.opacity = "1";
+                (el as HTMLElement).style.transform = "none";
+            });
+            return;
+        }
+
+        firstLoad = false;
+
+        const tl = createTimeline({
+            defaults: { duration: 800, ease: "outQuint" },
+        });
+
+        tl.add(".labs-header", {
+            opacity: [0, 1],
+            translateY: [30, 0],
+        }, 100)
+        .add(".labs-content", {
+            opacity: [0, 1],
+            translateY: [40, 0],
+            duration: 1000,
+        }, 400);
+    }
+
+    document.addEventListener("astro:page-load", initAnimations);
+</script>

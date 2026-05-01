@@ -17,7 +17,7 @@ export const Works = ({ works }: Props) => (
     <Topic title="Work Experience" />
     <div className="space-y-2">
       {works.map((work, index) => (
-        <WorkItem key={index} {...work} client:load />
+        <WorkItem key={index} {...work} />
       ))}
     </div>
   </Hideable>

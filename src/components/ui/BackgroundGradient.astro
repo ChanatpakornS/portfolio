@@ -1,0 +1,63 @@
+<div transition:persist="bg-gradient" id="bg-gradient" class="fixed inset-0 w-full h-screen overflow-hidden pointer-events-none z-0">
+    <svg class="hidden">
+        <defs>
+            <filter id="blurMe">
+                <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="10"
+                    result="blur"
+                />
+                <feColorMatrix
+                    in="blur"
+                    mode="matrix"
+                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+                    result="goo"
+                />
+                <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+        </defs>
+    </svg>
+    <div class="gradients-container h-full w-full blur-lg absolute inset-0 [filter:url(#blurMe)_blur(40px)]">
+        <!-- first -->
+        <div class="absolute [background:radial-gradient(circle_at_center,_rgb(255,199,143)_0,_rgb(255,199,143)_50%)_no-repeat] [mix-blend-mode:hard-light] w-[80%] h-[80%] top-[calc(50%-40%)] left-[calc(50%-40%)] [transform-origin:center_center] animate-first opacity-100"></div>
+        <!-- second -->
+        <div class="absolute [background:radial-gradient(circle_at_center,_rgba(255,214,170,0.8)_0,_rgba(255,214,170,0)_50%)_no-repeat] [mix-blend-mode:hard-light] w-[80%] h-[80%] top-[calc(50%-40%)] left-[calc(50%-40%)] [transform-origin:calc(50%-400px)] animate-second opacity-100"></div>
+        <!-- third -->
+        <div class="absolute [background:radial-gradient(circle_at_center,_rgba(255,183,133,0.8)_0,_rgba(255,183,133,0)_50%)_no-repeat] [mix-blend-mode:hard-light] w-[80%] h-[80%] top-[calc(50%-40%)] left-[calc(50%-40%)] [transform-origin:calc(50%+400px)] animate-third opacity-100"></div>
+        <!-- fourth -->
+        <div class="absolute [background:radial-gradient(circle_at_center,_rgba(255,229,180,0.8)_0,_rgba(255,229,180,0)_50%)_no-repeat] [mix-blend-mode:hard-light] w-[80%] h-[80%] top-[calc(50%-40%)] left-[calc(50%-40%)] [transform-origin:calc(50%-200px)] animate-fourth opacity-70"></div>
+        <!-- fifth -->
+        <div class="absolute [background:radial-gradient(circle_at_center,_rgba(255,160,122,0.8)_0,_rgba(255,160,122,0)_50%)_no-repeat] [mix-blend-mode:hard-light] w-[80%] h-[80%] top-[calc(50%-40%)] left-[calc(50%-40%)] [transform-origin:calc(50%-800px)_calc(50%+800px)] animate-fifth opacity-100"></div>
+        <!-- interactive pointer -->
+        <div id="bg-pointer" class="absolute [background:radial-gradient(circle_at_center,_rgba(255,140,105,0.8)_0,_rgba(255,140,105,0)_50%)_no-repeat] [mix-blend-mode:hard-light] w-full h-full -top-1/2 -left-1/2 opacity-70"></div>
+    </div>
+</div>
+
+<script>
+    function initPointer() {
+        const pointer = document.getElementById("bg-pointer");
+        if (!pointer) return;
+
+        let curX = 0;
+        let curY = 0;
+        let tgX = 0;
+        let tgY = 0;
+
+        document.addEventListener("mousemove", (e) => {
+            tgX = e.clientX;
+            tgY = e.clientY;
+        });
+
+        function move() {
+            curX += (tgX - curX) / 20;
+            curY += (tgY - curY) / 20;
+            pointer.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
+            requestAnimationFrame(move);
+        }
+
+        requestAnimationFrame(move);
+    }
+
+    // Only init once since this element persists
+    initPointer();
+</script>

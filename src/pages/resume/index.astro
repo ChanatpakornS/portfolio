@@ -11,12 +11,12 @@ import { Floating } from "@/components/contents/Resume/Floating";
 ---
 <ResumeLayout>
    <div class="size-full">
-      <Intro {...resume.intro} client:load/>
-      <Tech {...resume.techStack} client:load/>
-      <Education education={resume.education} client:load/>
-      <Works works={resume.works} client:load/>
-      <Projects projects={resume.projects} client:load/>
-      <Interest {...resume} client:load/>
+      <Intro {...resume.intro} />
+      <Tech {...resume.techStack} client:idle/>
+      <Education education={resume.education} client:idle/>
+      <Works works={resume.works} client:idle/>
+      <Projects projects={resume.projects} client:idle/>
+      <Interest {...resume} client:idle/>
    </div>
    <Floating client:load/>
 </ResumeLayout>

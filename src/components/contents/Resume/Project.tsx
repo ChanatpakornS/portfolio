@@ -14,7 +14,7 @@ export const Projects = ({ projects }: Props) => (
   <Hideable>
     <Topic title="Projects" />
     {projects.map((project, index) => (
-      <ProjectItem key={index} {...project} client:load />
+      <ProjectItem key={index} {...project} />
     ))}
   </Hideable>
 );

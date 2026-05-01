@@ -1,12 +1,140 @@
 ---
 import { Name } from "@components/contents/Name/Name.tsx";
-import Contact from "@components/contents/Contact/Contact.astro";
 import Layout from "@layouts/Layout.astro";
+import { resume } from "@components/contents/Resume/data/resume";
 ---
 
 <Layout>
-    <div class="items-center w-full">
-        <Name client:load />
-        <Contact />
+    <!-- Floating particles (decorative) -->
+    <div id="particles" class="fixed inset-0 pointer-events-none z-40" aria-hidden="true">
+        {Array.from({ length: 12 }).map((_, i) => (
+            <div
+                class="particle absolute rounded-full opacity-0"
+                style={`width: ${6 + (i % 4) * 4}px; height: ${6 + (i % 4) * 4}px; background: rgba(255,140,105,${0.15 + (i % 3) * 0.1}); left: ${8 + (i * 7) % 85}%; top: ${10 + (i * 13) % 75}%;`}
+            />
+        ))}
     </div>
+
+    <!-- Hero -->
+    <section
+        class="min-h-[85vh] flex flex-col items-center justify-center text-center px-4 py-20 relative"
+    >
+        <p
+            class="hero-greeting text-base md:text-lg text-gray-500 mb-4 tracking-[0.25em] uppercase font-normal opacity-0"
+        >
+            Hello, I'm
+        </p>
+        <div class="hero-name opacity-0">
+            <Name client:load />
+        </div>
+        <p class="hero-subtitle text-lg md:text-xl mt-6 text-gray-600 font-normal opacity-0">
+            Software Engineer · Bangkok, Thailand
+        </p>
+        <p
+            class="hero-description mt-6 max-w-lg text-gray-500 font-normal leading-relaxed text-sm md:text-base opacity-0"
+        >
+            <span class="italic" style="font-family: 'Times New Roman', Times, serif; font-weight: normal;">"A visionary digital craftsman, passionately architecting the backend systems of tomorrow whilst pursuing the noble art of Computer Engineering at the prestigious Chulalongkorn University. His scalable distributed architectures shall echo through the annals of cyberspace for generations to come."</span>
+            <span class="block mt-2 text-gray-400 text-xs md:text-sm" style="font-family: 'Times New Roman', Times, serif; font-weight: normal; font-style: italic;">— Claude.ai, 2026</span>
+        </p>
+        <div class="hero-buttons flex flex-wrap gap-3 mt-10 justify-center opacity-0">
+            <a
+                href="/resume"
+                data-astro-reload
+                class="bg-spotlight text-white px-6 py-3 rounded-full hover:scale-105 transition-transform font-bold text-sm"
+            >
+                View Resume
+            </a>
+            <a
+                href="https://github.com/ChanatpakornS"
+                target="_blank"
+                rel="noreferrer"
+                class="border-2 border-gray-800 text-gray-800 px-6 py-3 rounded-full hover:bg-gray-800 hover:text-white transition-all font-bold text-sm"
+            >
+                GitHub
+            </a>
+            <a
+                href="https://th.linkedin.com/in/chanatpakorn-sirintronsopon-85156227a"
+                target="_blank"
+                rel="noreferrer"
+                class="border-2 border-gray-800 text-gray-800 px-6 py-3 rounded-full hover:bg-gray-800 hover:text-white transition-all font-bold text-sm"
+            >
+                LinkedIn
+            </a>
+        </div>
+    </section>
 </Layout>
+
+<script>
+    import { animate, createTimeline } from "animejs";
+
+    const animated = ".hero-greeting, .hero-name, .hero-subtitle, .hero-description, .hero-buttons";
+    let firstLoad = true;
+
+    function initAnimations() {
+        if (!document.querySelector(".hero-greeting")) return;
+
+        if (!firstLoad) {
+            // Instant reveal on client-side navigation
+            document.querySelectorAll(animated).forEach((el) => {
+                (el as HTMLElement).style.opacity = "1";
+                (el as HTMLElement).style.transform = "none";
+            });
+            initParticles();
+            return;
+        }
+
+        firstLoad = false;
+
+        // ─── Hero entrance timeline (first visit only) ───
+        const heroTl = createTimeline({
+            defaults: { duration: 800, ease: "outQuint" },
+        });
+
+        heroTl
+            .add(".hero-greeting", {
+                opacity: [0, 1],
+                translateY: [30, 0],
+            }, 200)
+            .add(".hero-name", {
+                opacity: [0, 1],
+                scale: [0.92, 1],
+            }, 400)
+            .add(".hero-subtitle", {
+                opacity: [0, 1],
+                translateY: [20, 0],
+            }, 800)
+            .add(".hero-description", {
+                opacity: [0, 1],
+                translateY: [20, 0],
+            }, 1100)
+            .add(".hero-buttons", {
+                opacity: [0, 1],
+                translateY: [20, 0],
+            }, 1400);
+
+        initParticles();
+    }
+
+    function initParticles() {
+        document.querySelectorAll(".particle").forEach((particle, i) => {
+            animate(particle, {
+                opacity: [0, 0.15 + (i % 3) * 0.1],
+                duration: 1500,
+                delay: 600 + i * 150,
+                ease: "outQuad",
+            });
+
+            animate(particle, {
+                translateY: [0, -20 - (i % 4) * 10],
+                translateX: [0, (i % 2 === 0 ? 1 : -1) * (8 + (i % 5) * 5)],
+                duration: 3000 + i * 500,
+                ease: "inOutSine",
+                loop: true,
+                alternate: true,
+                delay: i * 300,
+            });
+        });
+    }
+
+    document.addEventListener("astro:page-load", initAnimations);
+</script>

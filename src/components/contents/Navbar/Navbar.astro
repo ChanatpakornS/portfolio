@@ -1,26 +1,66 @@
 ---
-import Link from "@components/commons/Link.astro";
-import { Image } from "astro:assets";
-import GitHubProfile from "@assets/githubProfile.png";
+import { House, FlaskConical, FileText, Github } from "@lucide/astro";
+
+const currentPath = Astro.url.pathname;
+
+const links = [
+    { href: "/", label: "Home", icon: House },
+    { href: "/labs", label: "Labs", icon: FlaskConical },
+    { href: "/resume", label: "Resume", icon: FileText, reload: true },
+    { href: "https://github.com/ChanatpakornS", label: "GitHub", icon: Github, external: true },
+];
 ---
 
-<nav class="w-full text-black bg-transparent z-50 sticky top-0">
-    <div class="flex justify-between py-4 px-8 items-center">
-        <div>
-            <a href="https://github.com/ChanatpakornS">
-                <Image
-                    src={GitHubProfile}
-                    alt="CSAP Logo"
-                    width={40}
-                    height={40}
-                    class="rounded-full"
-                />
-            </a>
-        </div>
-        <div>
-            <Link link="/" title="Home" content="Back to Home" />
-            <Link link="/labs" title="Labs" content="Go to my playground" />
-            <Link link="/resume" title="Resume" content="View my resume" />
-        </div>
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[999] print:hidden">
+    <div class="dock flex items-end gap-1 px-3 py-2 rounded-2xl border border-gray-200/50 bg-white/70 backdrop-blur-xl shadow-lg">
+        {
+            links.map((link) => {
+                const isActive =
+                    !link.external && (
+                        currentPath === link.href ||
+                        (link.href !== "/" && currentPath.startsWith(link.href))
+                    );
+                const Icon = link.icon;
+                return (
+                    <a
+                        href={link.href}
+                        {...(link.reload ? { "data-astro-reload": true } : {})}
+                        {...(link.external ? { target: "_blank", rel: "noreferrer" } : {})}
+                        class:list={[
+                            "dock-item flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl transition-all duration-200 group relative",
+                            isActive
+                                ? "bg-spotlight/10"
+                                : "hover:bg-gray-100/80",
+                        ]}
+                        title={link.label}
+                    >
+                        <Icon
+                            size={24}
+                            stroke-width={isActive ? 2.5 : 1.5}
+                            class:list={[
+                                "transition-all duration-200 group-hover:scale-125 group-hover:-translate-y-1",
+                                isActive ? "text-spotlight" : "text-gray-500 group-hover:text-gray-800",
+                            ]}
+                        />
+                        <span class:list={[
+                            "text-[10px] font-normal transition-colors",
+                            isActive ? "text-spotlight" : "text-gray-500 group-hover:text-gray-800",
+                        ]}>
+                            {link.label}
+                        </span>
+                        {isActive && (
+                            <span class="absolute -bottom-0.5 w-1 h-1 rounded-full bg-spotlight" />
+                        )}
+                    </a>
+                );
+            })
+        }
     </div>
 </nav>
+
+<style>
+    .dock-item:hover ~ .dock-item > :first-child,
+    .dock-item:has(~ .dock-item:hover) > :first-child {
+        transform: scale(1.08);
+    }
+</style>

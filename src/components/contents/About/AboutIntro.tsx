@@ -1,9 +1,8 @@
 "use client";
 
 import { useMaskCursor } from "@utils/useMaskCursor";
-import { motion } from "motion/react";
 import React, { useRef, useState } from "react";
-import styles from "./about.module.scss";
+import spotlightSvg from "@assets/spotlight.svg";
 
 interface Props {
     childReal: React.ReactNode;
@@ -11,7 +10,7 @@ interface Props {
 }
 
 export const AboutIntroduction = (props: Props) => {
-    const [isHover, setIsHover] = useState<Boolean>(false);
+    const [isHover, setIsHover] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
     const { x, y } = useMaskCursor(containerRef);
@@ -22,22 +21,27 @@ export const AboutIntroduction = (props: Props) => {
     return (
         <div
             ref={containerRef}
-            className="p-4 relative border border-gray-300 size-full"
+            className="p-4 relative size-full"
         >
-            <motion.div
-                className={styles.mask}
-                animate={{
+            <div
+                className="absolute inset-0 w-full h-full bg-[#ffc78f] text-black p-8 mask-no-repeat"
+                style={{
+                    maskImage: `url(${spotlightSvg.src})`,
+                    WebkitMaskImage: `url(${spotlightSvg.src})`,
                     maskPosition: `${x - size / 2}px ${y - size / 2}px`,
                     maskSize: `${size}px`,
+                    WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
+                    WebkitMaskSize: `${size}px`,
+                    maskRepeat: "no-repeat",
+                    WebkitMaskRepeat: "no-repeat",
                 }}
-                transition={{ type: "tween", ease: "backOut" }}
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
             >
                 {childReal}
-            </motion.div>
+            </div>
 
-            <div className="size-full abosolute top-0 left-0 pb-8 ">
+            <div className="size-full pb-8">
                 {childIdeal}
             </div>
         </div>

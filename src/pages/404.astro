@@ -3,22 +3,53 @@ import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout>
-    <div class="w-full">
+    <div class="w-full min-h-[60vh] flex items-center justify-center">
         <div
             class="w-full h-full space-y-6 text-center flex flex-col justify-center"
         >
-            <h1 class="text-4xl">🔍</h1>
-            <h1 class="text-4xl font-bold">Page Not Found</h1>
+            <h1 class="error-icon text-6xl opacity-0">🔍</h1>
+            <h1 class="error-title text-4xl font-bold opacity-0">Page Not Found</h1>
 
-            <p class="text-lg">
-                The page you are looking for does not exist or may be still in
-                construction?
+            <p class="error-desc text-lg font-normal text-gray-500 opacity-0">
+                The page you are looking for does not exist or may still be under
+                construction.
             </p>
             <a
                 href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                class="text-blue-400 hover:underline font-bold"
+                class="error-link text-spotlight hover:underline font-bold opacity-0"
                 >Go back to Home</a
             >
         </div>
     </div>
 </Layout>
+
+<script>
+    import { createTimeline } from "animejs";
+
+    function initAnimations() {
+        const tl = createTimeline({
+            defaults: { duration: 600, ease: "outQuint" },
+        });
+
+        tl.add(".error-icon", {
+            opacity: [0, 1],
+            scale: [0.5, 1],
+            rotate: ["-15deg", "0deg"],
+            ease: "outBack",
+        }, 100)
+        .add(".error-title", {
+            opacity: [0, 1],
+            translateY: [20, 0],
+        }, 300)
+        .add(".error-desc", {
+            opacity: [0, 1],
+            translateY: [15, 0],
+        }, 500)
+        .add(".error-link", {
+            opacity: [0, 1],
+            translateY: [10, 0],
+        }, 700);
+    }
+
+    document.addEventListener("astro:page-load", initAnimations);
+</script>
