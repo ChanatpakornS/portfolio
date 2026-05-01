@@ -5,38 +5,28 @@ import { resume } from "@components/contents/Resume/data/resume";
 ---
 
 <Layout>
-    <!-- Floating particles (decorative) -->
-    <div id="particles" class="fixed inset-0 pointer-events-none z-40" aria-hidden="true">
-        {Array.from({ length: 12 }).map((_, i) => (
-            <div
-                class="particle absolute rounded-full opacity-0"
-                style={`width: ${6 + (i % 4) * 4}px; height: ${6 + (i % 4) * 4}px; background: rgba(255,140,105,${0.15 + (i % 3) * 0.1}); left: ${8 + (i * 7) % 85}%; top: ${10 + (i * 13) % 75}%;`}
-            />
-        ))}
-    </div>
-
     <!-- Hero -->
     <section
         class="min-h-[85vh] flex flex-col items-center justify-center text-center px-4 py-20 relative"
     >
         <p
-            class="hero-greeting text-base md:text-lg text-gray-500 mb-4 tracking-[0.25em] uppercase font-normal opacity-0"
+            class="hero-greeting text-base md:text-lg text-gray-500 mb-4 tracking-[0.25em] uppercase font-normal"
         >
             Hello, I'm
         </p>
-        <div class="hero-name opacity-0">
+        <div class="hero-name">
             <Name client:load />
         </div>
-        <p class="hero-subtitle text-lg md:text-xl mt-6 text-gray-600 font-normal opacity-0">
+        <p class="hero-subtitle text-lg md:text-xl mt-6 text-gray-600 font-normal">
             Software Engineer · Bangkok, Thailand
         </p>
         <p
-            class="hero-description mt-6 max-w-lg text-gray-500 font-normal leading-relaxed text-sm md:text-base opacity-0"
+            class="hero-description mt-6 max-w-lg text-gray-500 font-normal leading-relaxed text-sm md:text-base"
         >
             <span class="italic" style="font-family: 'Times New Roman', Times, serif; font-weight: normal;">"A visionary digital craftsman, passionately architecting the backend systems of tomorrow whilst pursuing the noble art of Computer Engineering at the prestigious Chulalongkorn University. His scalable distributed architectures shall echo through the annals of cyberspace for generations to come."</span>
             <span class="block mt-2 text-gray-400 text-xs md:text-sm" style="font-family: 'Times New Roman', Times, serif; font-weight: normal; font-style: italic;">— Claude.ai, 2026</span>
         </p>
-        <div class="hero-buttons flex flex-wrap gap-3 mt-10 justify-center opacity-0">
+        <div class="hero-buttons flex flex-wrap gap-3 mt-10 justify-center">
             <a
                 href="/resume"
                 data-astro-reload
@@ -65,7 +55,7 @@ import { resume } from "@components/contents/Resume/data/resume";
 </Layout>
 
 <script>
-    import { animate, createTimeline } from "animejs";
+    import { createTimeline } from "animejs";
 
     const animated = ".hero-greeting, .hero-name, .hero-subtitle, .hero-description, .hero-buttons";
     let firstLoad = true;
@@ -73,19 +63,13 @@ import { resume } from "@components/contents/Resume/data/resume";
     function initAnimations() {
         if (!document.querySelector(".hero-greeting")) return;
 
-        if (!firstLoad) {
-            // Instant reveal on client-side navigation
-            document.querySelectorAll(animated).forEach((el) => {
-                (el as HTMLElement).style.opacity = "1";
-                (el as HTMLElement).style.transform = "none";
-            });
-            initParticles();
-            return;
-        }
-
+        if (!firstLoad) return;
         firstLoad = false;
 
-        // ─── Hero entrance timeline (first visit only) ───
+        document.querySelectorAll(animated).forEach((el) => {
+            (el as HTMLElement).style.opacity = "0";
+        });
+
         const heroTl = createTimeline({
             defaults: { duration: 800, ease: "outQuint" },
         });
@@ -111,29 +95,6 @@ import { resume } from "@components/contents/Resume/data/resume";
                 opacity: [0, 1],
                 translateY: [20, 0],
             }, 1400);
-
-        initParticles();
-    }
-
-    function initParticles() {
-        document.querySelectorAll(".particle").forEach((particle, i) => {
-            animate(particle, {
-                opacity: [0, 0.15 + (i % 3) * 0.1],
-                duration: 1500,
-                delay: 600 + i * 150,
-                ease: "outQuad",
-            });
-
-            animate(particle, {
-                translateY: [0, -20 - (i % 4) * 10],
-                translateX: [0, (i % 2 === 0 ? 1 : -1) * (8 + (i % 5) * 5)],
-                duration: 3000 + i * 500,
-                ease: "inOutSine",
-                loop: true,
-                alternate: true,
-                delay: i * 300,
-            });
-        });
     }
 
     document.addEventListener("astro:page-load", initAnimations);

@@ -5,7 +5,7 @@ import { About } from "@components/contents/About/About";
 
 <Layout>
     <section class="w-full max-w-5xl mx-auto px-4 py-12">
-        <div class="labs-header opacity-0">
+        <div class="labs-header">
             <h2 class="text-3xl md:text-4xl font-bold mb-2 tracking-tight text-black">
                 Labs
             </h2>
@@ -13,7 +13,7 @@ import { About } from "@components/contents/About/About";
                 Interactive experiments and playful components. Hover to reveal the truth.
             </p>
         </div>
-        <div class="labs-content opacity-0">
+        <div class="labs-content">
             <About client:load />
         </div>
     </section>
@@ -28,15 +28,12 @@ import { About } from "@components/contents/About/About";
     function initAnimations() {
         if (!document.querySelector(".labs-header")) return;
 
-        if (!firstLoad) {
-            document.querySelectorAll(animated).forEach((el) => {
-                (el as HTMLElement).style.opacity = "1";
-                (el as HTMLElement).style.transform = "none";
-            });
-            return;
-        }
-
+        if (!firstLoad) return;
         firstLoad = false;
+
+        document.querySelectorAll(animated).forEach((el) => {
+            (el as HTMLElement).style.opacity = "0";
+        });
 
         const tl = createTimeline({
             defaults: { duration: 800, ease: "outQuint" },
